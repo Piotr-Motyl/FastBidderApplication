@@ -1,0 +1,50 @@
+# Pliki systemowe
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Wirtualne środowisko
+venv/
+.env
+.envrc
+*.venv
+
+# Konfiguracje edytorów i IDE
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Pliki logów i cache
+logs/
+*.log
+local_settings.py
+db.sqlite3
+*.sqlite3
+
+# Pliki migracji Django (opcjonalnie, ale zwykle trzymane w repo)
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/__pycache__/
+
+# Media i statyczne pliki generowane
+media/
+staticfiles/
+static/
+
+# Klucze i prywatne dane
+secrets.json
+config/settings/local.py  # Jeśli trzymasz lokalne ustawienia poza repo
+
+# Pliki Docker (jeśli używasz)
+docker-compose.override.yml
+
+# Pliki zależności
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Node.js (jeśli używasz np. Webpack, Tailwind)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
