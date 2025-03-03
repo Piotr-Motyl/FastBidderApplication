@@ -35,7 +35,8 @@ class ResultWriter:
         Raises:
             ExcelProcessingError: W przypadku błędów podczas zapisu do pliku
         """
-        print("*** wywołano metodę ===write_results=== z ResultWriter")
+
+        print("DEBUG: *** write_results *** was called from the ResultWriter")
 
         try:
             # DEBUG - sprawdź zawartość results
@@ -125,7 +126,8 @@ class ResultWriter:
         Returns:
             str: Ścieżka do wygenerowanego raportu
         """
-        print("*** wywołano metodę ===_generate_report=== z ResultWriter")
+        print("DEBUG: *** _generate_report *** was called from the ResultWriter")
+
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         report_path = working_file_path.parent / self.REPORT_FILENAME_TEMPLATE.format(
             timestamp=timestamp
@@ -176,9 +178,11 @@ class ResultWriter:
         Returns:
             str: Litera kolumny (np. 'G')
         """
+
         print(
-            "*** wywołano metodę ===_get_or_create_source_info_column=== z ResultWriter"
+            "DEBUG: *** _get_or_create_source_info_column *** was called from the ResultWriter"
         )
+
         # Szukaj istniejącej kolumny
         for cell in sheet[1]:
             if cell.value == self.SOURCE_INFO_COLUMN_HEADER:

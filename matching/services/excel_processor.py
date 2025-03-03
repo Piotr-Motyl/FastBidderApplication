@@ -31,7 +31,8 @@ class ExcelProcessor:
         Raises:
             ExcelProcessingError: Gdy wystąpi problem z wczytaniem plików
         """
-        print("*** wywołano metodę ===load_files=== z ExcelProcessor")
+        print("DEBUG: *** load_files *** was called from the ExcelProcessor")
+
         try:
             # Zamknij poprzednio otwarte pliki
             self.close_all_workbooks()
@@ -79,7 +80,8 @@ class ExcelProcessor:
         Raises:
             ExcelProcessingError: Gdy wystąpi problem z odczytem danych
         """
-        print("*** wywołano metodę ===read_descriptions=== z ExcelProcessor")
+        print("DEBUG: *** read_descriptions *** was called from the ExcelProcessor")
+
         try:
             workbook = self.workbooks[str(file_path)]
             sheet = workbook.active
@@ -119,7 +121,8 @@ class ExcelProcessor:
         Raises:
             ExcelProcessingError: Gdy wystąpi problem z odczytem lub konwersją cen
         """
-        print("*** wywołano metodę ===read_prices=== z ExcelProcessor")
+        print("DEBUG: *** read_prices *** was called from the ExcelProcessor")
+
         try:
             workbook = self.workbooks[str(file_path)]
             sheet = workbook.active
@@ -161,7 +164,8 @@ class ExcelProcessor:
         Raises:
             ExcelProcessingError: Gdy wystąpi problem z zapisem
         """
-        print("*** wywołano metodę ===write_price=== z ExcelProcessor")
+        print("DEBUG: *** write_price *** was called from the ExcelProcessor")
+
         try:
             workbook = self.workbooks[file_path]
             sheet = workbook.active
@@ -174,7 +178,8 @@ class ExcelProcessor:
         """
         Zamyka wszystkie otwarte pliki Excel.
         """
-        print("*** wywołano metodę ===close_all_workbooks=== z ExcelProcessor")
+        print("*** close_all_workbooks *** was called from the ExcelProcessor")
+
         for workbook in self.workbooks.values():
             workbook.close()
         self.workbooks.clear()

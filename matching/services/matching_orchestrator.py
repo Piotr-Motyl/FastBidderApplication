@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Tuple
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -44,6 +44,7 @@ class MatchingOrchestrator:
         self.excel_processor = excel_processor
         self.data_validator = data_validator
         self.matching_service = matching_service
+
         # Przekazujemy excel_processor do result_writer
         if not hasattr(result_writer, "excel_processor"):
             result_writer.excel_processor = excel_processor
@@ -67,8 +68,9 @@ class MatchingOrchestrator:
             Exception: W przypadku błędów w trakcie przetwarzania
         """
         print(
-            "*** wywołano metodę ===process_matching_request=== z MatchingOrchestrator"
+            "DEBUG: *** process_matching_request *** was called from the MatchingOrchestrator"
         )
+
         try:
             # 1. Walidacja danych wejściowych
             self.data_validator.validate_files(
@@ -96,8 +98,9 @@ class MatchingOrchestrator:
             )
 
             print(
-                f"PRZED zapisem: matching_results: {matching_results} \n wf_price_target_column: {config.wf_price_target_column} \n w process_matching_request w matching_orchestrator"
+                f"DEBUG: BEFORE saving: matching_results: {matching_results} \n wf_price_target_column: {config.wf_price_target_column} \n *** process_matching_request *** at matching_orchestrator"
             )
+
             # 5. Zapis wyników - ResultWriter został już zaktualizowany do korzystania z ExcelProcessor
             report_path = self.result_writer.write_results(
                 matching_results,
@@ -132,7 +135,10 @@ class MatchingOrchestrator:
             - Lista krotek (opis, adres_komórki) z pliku REF
             - Słownik {adres_komórki: cena} z pliku REF
         """
-        print("*** wywołano metodę ===_extract_excel_data=== z MatchingOrchestrator")
+        print(
+            "DEBUG: *** _extract_excel_data *** was called from the MatchingOrchestrator"
+        )
+
         # Pobierz opisy z pliku WF
         wf_descriptions = self.excel_processor.read_descriptions(
             file_path=config.working_file_path,
@@ -147,10 +153,10 @@ class MatchingOrchestrator:
             cell_range=config.ref_description_range,
         )
         print(
-            f"matching_orchestrator: Pobrana column z REF ***{config.ref_description_column}***"
+            f"DEBUG: matching_orchestrator: column taken from REF ***{config.ref_description_column}***"
         )
         print(
-            f"matching_orchestrator:Pobrane cell_range z REF ***{config.ref_description_range}***"
+            f"DEBUG: matching_orchestrator: cell_range taken from REF ***{config.ref_description_range}***"
         )
 
         # Pobierz ceny z pliku REF
@@ -160,7 +166,7 @@ class MatchingOrchestrator:
             row_range=config.ref_description_range,  # używamy tego samego zakresu wierszy co dla opisów
         )
         print(
-            f"matching_orchestrator:Pobrane read_prices z REF ***{config.ref_price_source_column}***"
+            f"DEBUG: matching_orchestrator: read_prices taken from REF ***{config.ref_price_source_column}***"
         )
 
         return (

@@ -14,7 +14,8 @@ venv/
 .idea/
 *.sublime-workspace
 
-# Pliki logów i cache
+# Baza danych, pliki logów i cache
+uploaded_files/
 logs/
 *.log
 local_settings.py

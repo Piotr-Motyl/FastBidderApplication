@@ -31,7 +31,7 @@ class DataValidator:
             ValidationError: Gdy któryś z plików nie spełnia wymagań
 
         """
-        print("*** wywołano metodę ===validate_files=== z DataValidator")
+        print("DEBUG: *** validate_files *** was called from the DataValidator")
         files_to_validate = [
             ("Working File", working_file_path),
             ("Reference File", reference_file_path),
@@ -67,7 +67,7 @@ class DataValidator:
         Returns:
             bool: True jeśli plik jest poprawny, False w przeciwnym razie
         """
-        print("*** wywołano metodę ===validate_file_path=== z DataValidator")
+        print("DEBUG: *** wywołano metodę ===validate_file_path=== z DataValidator")
         try:
             path = Path(file_path)
 
@@ -121,7 +121,7 @@ class DataValidator:
         Returns:
             bool: True jesli zakres jest poporawny, False w przeciwnym razie
         """
-        print("*** wywołano metodę ===validate_cell_range=== z DataValidator")
+        print("DEBUG: *** validate_cell_range *** was called from the DataValidator")
 
         try:
             start = cell_range["start"]
@@ -162,19 +162,17 @@ class DataValidator:
         Returns:
             bool: True jeśli kolumna jest poprawna, False w przeciwnym razie
         """
-        print("*** wywołano metodę ===validate_price_column=== z DataValidator")
+        print("DEBUG: *** validate_price_column *** was called from the DataValidator")
+
         try:
-            # Sprawdzenie czy kolumna jest pojedynczą literą A-Z
-            # TODO: sprawdzić walidcję od AA do ZZ (podwójne litery)
+            # Sprawdzenie czy kolumna jest pojedynczą literą A-Z (TODO: Zamienić na regular expressions ponieważ kolumny mogą być AA+)
             if not (len(price_column) == 1 and price_column.isalpha()):
                 self.validation_errors.append(
                     f"Nieprawidłowa kolumna z cenami: {price_column}."
                     f"Wymaga pojedyncza litera A-Z"
                 )
                 return False
-
-            # Kolumna cen może być taka sama jak kolumna opisów
-            # TODO: NIE MOŻE BYĆ !!!
+            # TODO: Kolumna cen NIE może być taka sama jak kolumna opisów
             return True
 
         except Exception as e:
@@ -190,7 +188,10 @@ class DataValidator:
         Raises:
             validationError: Jeśli występują błędy walidacji
         """
-        print("*** wywołano metodę ===validate_matching_request=== z DataValidator")
+        print(
+            "DEBUG: *** validate_matching_request *** was called from the DataValidator"
+        )
+
         # Reset lsity błędów
         self.validation_errors = []
 

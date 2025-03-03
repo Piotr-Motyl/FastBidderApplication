@@ -8,4 +8,3 @@ class UploadedFile(models.Model):
 
     def __str__(self):
         return f"{self.file.name.split('/')[-1]} (ID: {self.id})"
-    

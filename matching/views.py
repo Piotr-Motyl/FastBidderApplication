@@ -59,40 +59,6 @@ class MatchingView(APIView):
                     ],
                 )
 
-                """config = MatchingConfig(
-                    working_file_path=Path(validated_data["working_file"]["file_path"]),
-                    reference_file_path=Path(
-                        validated_data["reference_file"]["file_path"]
-                    ),
-                    matching_threshold=validated_data["matching_threshold"],
-                    # Dodajemy nowe wymagane parametry z domyślnymi wartościami
-                    # lub z danych serializera jeśli są dostępne
-                    wf_description_column=validated_data.get(
-                        "wf_description_column", "B"  # było A
-                    ),
-                    wf_description_range={
-                        "start": validated_data.get(
-                            "wf_description_start", 4
-                        ),  # było "A2"
-                        "end": validated_data.get(
-                            "wf_description_end", 6
-                        ),  # było "A100"
-                    },
-                    wf_price_target_column=validated_data.get(
-                        "wf_price_target_column", "D"  # było F
-                    ),
-                    ref_description_column=validated_data.get(
-                        "ref_description_column", "C"  # było B
-                    ),
-                    ref_description_range={
-                        "start": validated_data.get("ref_description_start", 4),
-                        "end": validated_data.get("ref_description_end", 6),
-                    },
-                    ref_price_source_column=validated_data.get(
-                        "ref_price_source_column", "E"
-                    ),  # było: ref_price_source_column=validated_data.get("ref_price_source_column", "E"),
-                )"""
-
                 # Wywołanie procesu dopasowania
                 report_path = self.orchestrator.process_matching_request(config)
                 return Response({"report_path": report_path}, status=status.HTTP_200_OK)

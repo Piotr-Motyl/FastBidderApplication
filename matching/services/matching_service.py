@@ -46,7 +46,8 @@ class MatchingService:
         Returns:
             Dict z informacjami o najlepszym dopasowaniu lub None jeśli nie znaleziono
         """
-        print("*** wywołano metodę ===find_best_match=== z MatchingService")
+        print("DEBUG: *** find_best_match *** was called from the MatchingService")
+
         wf_desc, wf_cell = wf_description
         best_match = None
         best_score = -1
@@ -64,7 +65,7 @@ class MatchingService:
                 score = self.matching_function(wf_desc, ref_desc)
 
                 # Wyciągamy numer wiersza z adresu komórki (np. '4' z 'C4')
-                # TODO: Zamienić na regular expressions bo kolumny mogą być AA+
+                # TODO: Zamienić na regular expressions ponieważ kolumny mogą być AA+
                 ref_row = ref_cell[1:]
 
                 # Tworzymy adres komórki z ceną (np. 'E4')
@@ -124,7 +125,7 @@ class MatchingService:
         Returns:
             Lista słowników z informacjami o dopasowaniach
         """
-        print("*** wywołano metodę ===process_descriptions=== z MatchingService")
+        print("DEBUG: *** process_descriptions *** was called from the MatchingService")
 
         results = []
 
@@ -136,7 +137,7 @@ class MatchingService:
                 results.append(match)
 
         print(
-            f"PO for+in: ref_descriptions: {ref_descriptions} / ref_prices: {ref_prices} w process_descriptions w matching_service"
+            f"DEBUG: AFTER for+in: ref_descriptions: {ref_descriptions} / ref_prices: {ref_prices} *** process_descriptions *** in matching_service"
         )
         return results
 
@@ -150,7 +151,10 @@ class MatchingService:
         Returns:
             Słownik ze statystykami
         """
-        print("*** wywołano metodę ===get_matching_statistics=== z MatchingService")
+        print(
+            "DEBUG: *** get_matching_statistics *** was called from the MatchingService"
+        )
+
         if not results:
             return {
                 "total_matches": 0,
