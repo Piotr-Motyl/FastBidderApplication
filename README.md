@@ -2,7 +2,7 @@
 
 This project is no longer under active development.  
 It has been replaced by a new, rethought version available here:  
-➡️ [FastBidder v2 (Active Development)] (soon on github)
+➡️ [FastBidder v2 (Active Development)] -> https://github.com/Piotr-Motyl/FastBidder_V2
 
 ---
 
