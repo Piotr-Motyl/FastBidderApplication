@@ -1,3 +1,26 @@
+## ⚠️ Archived Version of FastBidder
+
+This project is no longer under active development.  
+It has been replaced by a new, rethought version available here:  
+➡️ [FastBidder v2 (Active Development)] (soon on github)
+
+---
+
+### 🧠 Why?
+
+After working on this version, I took a step back to carefully evaluate the structure, architecture, and overall direction of the project.  
+Based on that, I decided to start fresh — with a clearer design, improved modularity, and better scalability in mind.
+
+This repository remains public for reference purposes, as part of my learning journey and development process.
+
+---
+
+*Thank you for checking out my work — feel free to explore the new version!*
+
+---
+---
+
+
 # FastBidderApplication
 (early stage of application - developing mostly for learning purpose)
 
